@@ -1,0 +1,42 @@
+{{ define "main" }}
+
+{{ "<!-- heading -->" | safeHTML }}
+<section class="section section-inner started-heading">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+				<div class="m-titles">
+					<h1 class="m-title scrolla-element-anim-1 scroll-animate" data-animate="active">
+						{{ .Title }}
+					</h1>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+{{ "<!-- single post -->" | safeHTML }}
+<section class="section section-inner m-archive">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 offset-1">
+
+				{{ "<!-- content -->" | safeHTML }}
+				<div class="description">
+					<div class="post-content scrolla-element-anim-1 scroll-animate" data-animate="active">
+
+						{{ .Content }}
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</section>
+
+{{ end }}

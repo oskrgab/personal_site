@@ -1,0 +1,69 @@
+{{ define "main" }}
+{{ $dateFormat := .Site.Params.dateFormat }}
+
+{{ "<!-- heading -->" | safeHTML }}
+<section class="section section-inner started-heading">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+        <div class="h-titles">
+          <h1 class="h-title scrolla-element-anim-1 scroll-animate" data-animate="active">{{ .Title }}</h1>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-inner m-archive">
+  <div class="container">
+
+    <div class="row row-custom">
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 vertical-line">
+
+        {{ "<!-- description -->" | safeHTML }}
+        <div class="text scrolla-element-anim-1 scroll-animate" data-animate="active">
+          <h6>{{ .Params.text | safeHTML }}</h6>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  {{ "<!-- blog list -->" | safeHTML }}
+  <div class="blog-items">
+    {{ range .Paginator.Pages }}
+    <div class="archive-item">
+      <div class="image">
+        <a href="{{ .Permalink }}">
+          <img src="{{ .Params.featureImage | absURL }}" alt="{{ .Title }}" />
+        </a>
+      </div>
+      <div class="desc">
+        <div class="category scrolla-element-anim-1 scroll-animate" data-animate="active">
+          {{ with .Params.categories }}{{ delimit . " / "}}{{ end }}<br/><span>{{ .PublishDate.Format $dateFormat }}</span>
+        </div>
+        <div class="title scrolla-element-anim-1 scroll-animate" data-animate="active">
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </div>
+        <div class="text scrolla-element-anim-1 scroll-animate" data-animate="active">
+          <p>{{ .Summary }} &#8230;</p>
+          <div class="readmore">
+            <a href="{{ .Permalink }}" class="lnk">{{ i18n "readMore" }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+		{{ end }}
+
+  </div>
+
+	{{ partial "pagination" .}}
+
+</section>
+
+{{ end }}

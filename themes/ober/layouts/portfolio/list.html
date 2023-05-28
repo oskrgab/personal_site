@@ -1,0 +1,81 @@
+{{ define "main" }}
+{{ $portfolio := .Site.Params.portfolio }}
+
+{{ "<!-- heading -->" | safeHTML }}
+<section class="section section-inner started-heading">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+        <div class="h-titles">
+          <h1 class="h-title scrolla-element-anim-1 scroll-animate" data-animate="active">{{ .Title }}</h1>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-inner m-archive">
+  <div class="container">
+
+    <div class="row row-custom">
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 vertical-line">
+
+        {{ "<!-- description -->" | safeHTML }}
+        <div class="text scrolla-element-anim-1 scroll-animate" data-animate="active">
+          <h6>{{ .Params.text | safeHTML }}</h6>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+        {{ "<!-- works grid -->" | safeHTML }}
+        <div class="works-box">
+
+          <div class="filter-links scrolla-element-anim-1 scroll-animate" data-animate="active">
+            <a href="#" class="active" data-href=".works-col">{{ i18n "all" }}</a>
+            {{ range $portfolio.filters }}
+            <a href="#" data-href=".sorting-{{ .slug }}">{{ .name }}</a>
+            {{ end }}
+          </div>
+
+          <div class="works-items works-masonry-items row">
+            {{ range .Data.Pages }}
+            <div class="works-col col-xs-12 col-sm-12 col-md-12 col-lg-6 sorting-{{ .Params.category_slug }}">
+              <div class="works-item">
+                <a href="{{ .Permalink }}">
+                  <span class="image scrolla-element-anim-1 scroll-animate" data-animate="active">
+                    <span class="img">
+                      <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}" />
+                      <span class="overlay"></span>
+                    </span>
+                  </span>
+                  <span class="desc">
+                    <span class="name splitting-text-anim-1 scroll-animate" data-splitting="chars" data-animate="active">
+                      {{ .Title }}
+                    </span>
+                    <span class="category scrolla-element-anim-1 scroll-animate" data-animate="active">
+                      {{ .Params.category }}
+                    </span>
+                  </span>
+                </a>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{{ end }}

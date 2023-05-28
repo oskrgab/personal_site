@@ -1,0 +1,70 @@
+{{ $portfolio := .Site.Params.portfolio }}
+{{ with .Site.Data.home.portfolio }}
+{{ if .enable }}
+<section class="section section-bg section-parallax-5" id="works-section">
+  <div class="container">
+
+    {{ "<!-- heading -->" | safeHTML }}
+    <div class="m-titles">
+      <h2 class="m-title splitting-text-anim-1 scroll-animate" data-splitting="chars" data-animate="active">
+        {{ .title }}
+      </h2>
+    </div>
+
+    <div class="row row-custom">
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 vertical-line">
+
+        {{ "<!-- description -->" | safeHTML }}
+        <div class="text scrolla-element-anim-1 scroll-animate" data-animate="active">
+          {{ .text | safeHTML }}
+        </div>
+
+      </div>
+    </div>
+
+    {{ "<!-- works list -->" | safeHTML }}
+    <div class="works-box">
+
+      <div class="filter-links scrolla-element-anim-1 scroll-animate" data-animate="active">
+        <a href="#" class="active" data-href=".works-col">{{ i18n "all" }}</a>
+        {{ range $portfolio.filters }}
+        <a href="#" data-href=".sorting-{{ .slug }}">{{ .name }}</a>
+        {{ end }}
+      </div>
+
+      <div class="works-items works-list-items row">
+
+        {{ range first $portfolio.homeNumOfItems (where $.Site.RegularPages "Section" "portfolio") }}
+        <div class="works-col col-xs-12 col-sm-12 col-md-12 col-lg-12 sorting-branding sorting-{{ .Params.category_slug }}">
+          <div class="works-item">
+            <a href="{{ .Permalink }}">
+              <span class="image scrolla-element-anim-1 scroll-animate" data-animate="active">
+                <span class="img">
+                  <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}" />
+                  <span class="overlay"></span>
+                </span>
+              </span>
+              <span class="desc">
+                <span class="name splitting-text-anim-1 scroll-animate" data-splitting="chars" data-animate="active">
+                  {{ .Title }}
+                </span>
+                <span class="category scrolla-element-anim-1 scroll-animate" data-animate="active">
+                  {{ .Params.category }}
+                </span>
+              </span>
+            </a>
+          </div>
+        </div>
+        {{ end }}
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{{ end }}
+{{ end }}
