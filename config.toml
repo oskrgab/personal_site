@@ -1,6 +1,6 @@
 # General Settings
 title = "Ober - CV/Resume & Personal Portfolio Hugo Theme"
-baseURL = "https://bslthemes.com/" #YOUR SITE URL
+baseURL = "https://oscarcortez.me/" #YOUR SITE URL
 languageCode = "en-us"
 theme = "ober"
 resourceDir = "../resources"
