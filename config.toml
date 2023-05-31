@@ -62,7 +62,7 @@ DefaultContentLanguage = "en"
 [params]
 defaultSkin = "light"
 dateFormat = "January 2, 2006"
-authorName = "Federico Ober"
+authorName = "Oscar Cortez"
 disqusComments = "test" #YOUR DISQUS COMMENTS SHORTNAME
 formspreeURL = "" #YOUR FORMSPREE URL
 googleAnalytics = "" #YOUR GOOGLE ANALYTICS CODE
@@ -84,7 +84,7 @@ developer = "bslthemes"
 [[params.social]]
 title = "Twitter"
 icon = "fab fa-twitter"
-url = "https://www.twitter.com/"
+url = "https://twitter.com/oskrgab"
 weight = 1
 [[params.social]]
 title = "Dribbble"

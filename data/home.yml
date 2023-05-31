@@ -6,20 +6,21 @@
 ### Hero [ heroSection ]
 hero:
   enable: true
-  image: "images/about/profile.png"
-  image_alt: "Federico Ober"
-  title: "Federico <br>Ober"
-  subtitle: "UI UX DESIGNER"
-  description: "I\"m a UI/UX Designer based in NewYork and enjoy playing with colors. I love travelling, photography &amp; music."
+  image: "https://filedn.com/l29xPIuSDBj8oQxo2gqP368/ai_training_pics/cv_bw_sat.jpg"
+  image_alt: "Oscar Cortez"
+  title: "Oscar <br>Cortez"
+  subtitle: "Senior RE | Developer | Data Scientist"
+  description: "I\'m a Senior Reservoir Engineer based in Houston, TX. I work at the 
+  intersection of petroleum engineering, data science, and software development to provide innovative solutions to the energy industry."
   info:
     - label: "Born in"
-      value: "NewYork"
+      value: "Ecuador"
 
     - label: "Experience"
-      value: "7+ Years"
+      value: "10+ Years"
 
     - label: "Date of Birth"
-      value: "27 June 1992"
+      value: "12 February 1990"
 
 ### About [ aboutSection ]
 about:
@@ -27,15 +28,11 @@ about:
   title: "About Me"
   text: "
   <p>
-    My name is Federico Ober. I have been studying UI UX Design since October 2020. I like creating
-    a cool design project.</p><p>Donec imperdiet risus at tortor consequat maximus et eget magna.
-    Cras ornare sagittis augue, id sollicitudin justo tristique ut. Nullam ex enim, euismod vel
-    bibendum ultrices, fringilla vel eros. Donec euismod leo lectus, et euismod metus euismod sed.
-    Quisque quis suscipit ipsum, at pellentesque velit. Duis a congue sem.
-  </p>
-  <p>
-    In sed dolor ut ligula malesuada sollicitudin. Morbi iaculis convallis arcu, nec maximus tellus
-    sodales in. Curabitur blandit enim at nisl lobortis, non pretium enim hendrer
+    Hello, my name is Oscar Cortez, and I am a Consulting Reservoir Engineer for the Digital Subsurface Solutions team at SLB. 
+    With a decade of experience in the oil and gas industry, I specialize in optimizing hydrocarbon extraction and management 
+    from subsurface reservoirs. More recently, I have expanded my focus to include the safe and efficient storage of CO2 in the subsurface. 
+    In both contexts, I work at the intersection of Data Science, Software Engineering, and Domain knowledge to develop tailored solutions 
+    for our clients.
   </p>
   "
   list:
