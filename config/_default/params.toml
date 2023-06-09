@@ -24,7 +24,7 @@ fingerprintAlgorithm = "sha256"
 [footer]
   showCopyright = true
   showThemeAttribution = true
-  showAppearanceSwitcher = false
+  showAppearanceSwitcher = true
   showScrollToTop = true
 
 [homepage]
@@ -54,10 +54,10 @@ fingerprintAlgorithm = "sha256"
 [list]
   showBreadcrumbs = false
   showSummary = false
-  showTableOfContents = false
+  showTableOfContents = true
   showTaxonomies = false
   groupByYear = true
-  paginationWidth = 1
+  paginationWidth = 2
 
 [sitemap]
   excludedKinds = ["taxonomy", "term"]

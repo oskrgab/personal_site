@@ -61,5 +61,5 @@ title = "Oscar"
   #   { twitch = "https://twitch.tv/username" },
      { twitter = "https://twitter.com/oskrgab" },
   #   { whatsapp = "https://wa.me/phone-number" },
-  #   { youtube = "https://youtube.com/username" },
+     { youtube = "https://youtube.com/oskrgab" },
    ]
