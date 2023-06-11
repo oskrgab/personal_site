@@ -12,14 +12,14 @@ title = "Oscar"
 
   dateFormat = "2 January 2006"
 
-   mainSections = ["section1", "section2"]
+   mainSections = ["About", "Blog"]
    description = "Personal Website"
 
 [author]
    name = "Oscar Cortez"
    image = "img/oscar_1.jpg"
    headline = "Senior Reservoir Engineer | Developer | Data Scientist"
-   bio = "Experienced Reservoir Engineer with over a decade of experience in the O&G industry working at the intersection of software development, data science and domain knowledge to deliver innovative solutions."
+   bio = "Reservoir Engineer with over a decade of experience in the O&G industry working at the intersection of software development, data science and domain knowledge to deliver innovative solutions."
    links = [
      { email = "mailto:oscarcortez@me.com" },
   #   { link = "https://link-to-some-website.com/" },
