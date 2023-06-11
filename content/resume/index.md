@@ -1,9 +1,11 @@
 ---
 title: "Oscar's Resume"
-date: 2022-01-25
+lastmod: 2023-05-12
 description: "My Resume"
-summary: "Learn more professional qualifications."
+summary: "My professional qualifications."
 tags: ["cv", "resume"]
+showAuthor: false
+showPagination: false   
 ---
 
 Oscar is a Senior Reservoir Engineer with data science and over a decade of O&G experience, specializing in reservoir simulation, reserves estimation & fluid Modeling. Currently consulting on CCS projects, leveraging data science for workflow enhancements and spearheading custom software solutions.
@@ -15,7 +17,7 @@ Reservoir Engineering, Data Science, Software Development, Reservoir Simulation,
 ## Work Experience
 
 ### **Senior Reservoir Engineer**
-**SLB - Digital Subsurface Solutions**
+**SLB - Digital Subsurface Solutions**<br>
 11/2022 - Present, Houston, United States
 
 - Applying advanced analytics and machine learning techniques to solve high-dimensional problems, such as creating surrogate reservoir models for accurate 2D/3D property predictions in CCS projects.
@@ -24,7 +26,7 @@ Reservoir Engineering, Data Science, Software Development, Reservoir Simulation,
 - Leveraging data science methodologies to enhance reservoir modeling, simulation processes, and reserves estimation, thus optimizing decision-making and uncovering new opportunities.
 
 ### **Senior Reservoir Engineer**
-**Schlumberger - Asset Performance Solutions / Shaya Consortium**
+**Schlumberger - Asset Performance Solutions / Shaya Consortium**<br>
 03/2016 - 11/2022, Quito, Ecuador
 
 - Creation of dynamic models of large fields for new wells and workover candidate proposals using probabilistic approaches.
@@ -35,7 +37,7 @@ Reservoir Engineering, Data Science, Software Development, Reservoir Simulation,
 - Developed Saturation Height Models per rock type used for volume and dynamic model calculations.
 
 ### **Reservoir Engineer**
-**Schlumberger - Production Management / Kamana Consortium**
+**Schlumberger - Production Management / Kamana Consortium**<br>
 02/2015 - 03/2016, Quito, Ecuador
 
 - Multidisciplinary approach towards the definition of the asset exploitation strategy.
@@ -46,7 +48,7 @@ Reservoir Engineering, Data Science, Software Development, Reservoir Simulation,
 - Reservoir Simulation and subsurface uncertainty management in the Pañacocha field.
 
 ### **Reservoir Engineer**
-**Schlumberger - Petrotechnical Services (PTS)**
+**Schlumberger - Petrotechnical Services (PTS)**<br>
 08/2013 - 02/2015, Quito, Ecuador
 
 - Integrated Reservoir Characterization and Simulation projects for clients in Ecuador that significantly added value to the client's mature fields.
