@@ -3,7 +3,7 @@ languageName = "English"
 weight = 1
 
 title = "Oscar"
- copyright = "Copy, _right?_ :thinking_face:"
+ copyright = "© Oscar Cortez 2023"
 
 [params]
   isoCode = "en"
