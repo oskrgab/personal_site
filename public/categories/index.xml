@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Oscar Cortez</title>
-    <link>http://oscarcortez.me/categories/</link>
-    <description>Recent content in Categories on Oscar Cortez</description>
+    <title>Categories on Oscar</title>
+    <link>https://oscarcortez.me/categories/</link>
+    <description>Recent content in Categories on Oscar</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://oscarcortez.me/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <copyright>Copy, _right?_ :thinking_face:</copyright><atom:link href="https://oscarcortez.me/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

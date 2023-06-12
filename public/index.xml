@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Oscar Cortez</title>
-    <link>http://oscarcortez.me/</link>
-    <description>Recent content on Oscar Cortez</description>
+    <title>Welcome on Oscar</title>
+    <link>https://oscarcortez.me/</link>
+    <description>Recent content in Welcome on Oscar</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 26 May 2023 18:26:31 -0500</lastBuildDate><atom:link href="http://oscarcortez.me/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <copyright>Copy, _right?_ :thinking_face:</copyright>
+    <lastBuildDate>Fri, 12 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://oscarcortez.me/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>My First Post</title>
-      <link>http://oscarcortez.me/posts/my-first-post/</link>
-      <pubDate>Fri, 26 May 2023 18:26:31 -0500</pubDate>
+      <title>Oscar&#39;s Resume</title>
+      <link>https://oscarcortez.me/resume/</link>
+      <pubDate>Fri, 12 May 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://oscarcortez.me/posts/my-first-post/</guid>
-      <description>Introduction This is bold text, and this is emphasized text.
-Visit the Hugo website!</description>
+      <guid>https://oscarcortez.me/resume/</guid>
+      <description>My professional qualifications.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://oscarcortez.me/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://oscarcortez.me/about/</guid>
+      <description>I am particularly interested in solving engineering problems with software development and data science.</description>
     </item>
     
   </channel>
