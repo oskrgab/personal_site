@@ -34,7 +34,7 @@ fingerprintAlgorithm = "sha256"
 
 [article]
   showDate = true
-  showDateUpdated = false
+  showDateUpdated = true
   showAuthor = true
   showBreadcrumbs = false
   showDraftLabel = true
@@ -46,16 +46,16 @@ fingerprintAlgorithm = "sha256"
   invertPagination = false
   showReadingTime = true
   showTableOfContents = true
-  showTaxonomies = false
+  showTaxonomies = true
   showWordCount = false
-  showComments = false
+  showComments = true
   # sharingLinks = ["facebook", "twitter", "mastodon", "pinterest", "reddit", "linkedin", "email"]
 
 [list]
-  showBreadcrumbs = false
-  showSummary = false
+  showBreadcrumbs = true
+  showSummary = true
   showTableOfContents = true
-  showTaxonomies = false
+  showTaxonomies = true
   groupByYear = true
   paginationWidth = 2
 

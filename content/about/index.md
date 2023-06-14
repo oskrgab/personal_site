@@ -4,6 +4,8 @@ showDate: false
 showAuthor: false
 showPagination: false
 showReadingTime: false
+showComments: false
+#layout: simple
 ---
 
 I am particularly interested in solving engineering problems with software development and data science.
