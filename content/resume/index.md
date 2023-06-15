@@ -7,6 +7,7 @@ tags: ["cv", "resume"]
 showAuthor: false
 showPagination: false
 showComments: false
+showDate: false
 ---
 
 Oscar is a Senior Reservoir Engineer with data science and over a decade of O&G experience, specializing in reservoir simulation, reserves estimation & fluid Modeling. Currently consulting on CCS projects, leveraging data science for workflow enhancements and spearheading custom software solutions.
