@@ -63,12 +63,12 @@ Reservoir Engineering, Data Science, Software Development, Reservoir Simulation,
 
 ## Education
 
-### [Master of Science in Analytics](https://www.parchment.com/u/award/7466c82e4991e2438a34f56e1935583a)
-Georgia Institute of Technology
+### [Master of Science in Analytics](https://www.parchment.com/u/award/7466c82e4991e2438a34f56e1935583a)<br>
+Georgia Institute of Technology<br>
 01/2021 - 05/2023, Atlanta, Georgia
 
-### B.S. Petroleum Engineering
-Escuela Superior Politécnica del Litoral
+### B.S. Petroleum Engineering<br>
+Escuela Superior Politécnica del Litoral<br>
 03/2008 - 04/2013, Guayaquil, Ecuador
 
 ## Certificates

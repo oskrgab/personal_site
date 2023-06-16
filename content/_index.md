@@ -12,5 +12,5 @@ science through the lens of an engineer who has struggled (I still do 😅) to f
 and techniques to create value for my clients by developing domain-heavy applications.
 
 I hope you can find something useful here and if you have any questions or comments, 
-please feel free to drop me a line!
+please feel free to [contact me]({{< ref "/content/contact/index.md" >}})!
 
