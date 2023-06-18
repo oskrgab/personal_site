@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Subscription</title>
-</head>
-<body>
-    <div class="ml-embedded" data-form="cypMk2"></div>
-</body>
-</html>
+<div id="formContainerLight" class="ml-embedded" data-form="cypMk2"></div>
+<div id="formContainerDark" class="ml-embedded" data-form="uLodoc" style="display: none;"></div>
+
+<script>
+    // Load the MailerLite universal script once, when the DOM is ready
+    // document.addEventListener("DOMContentLoaded", function() {
+    //     (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    //         .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    //         n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    //     (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    //     ml('account', '479150');
+    // });
+
+    function updateElementAppearance() {
+        const formContainerLight = document.getElementById('formContainerLight');
+        const formContainerDark = document.getElementById('formContainerDark');
+
+        if (document.documentElement.classList.contains('dark')) {
+            // user prefers dark theme
+            formContainerLight.style.display = 'none';
+            formContainerDark.style.display = 'block';
+        } else {
+            // user prefers light theme
+            formContainerLight.style.display = 'block';
+            formContainerDark.style.display = 'none';
+        }
+    }
+
+    // Run the function initially to set the correct appearance
+    updateElementAppearance();
+
+    // Update appearance whenever the appearance switch is clicked
+    var switchers = document.querySelectorAll("[id^='appearance-switcher']");
+    switchers.forEach((switcher) => {
+        switcher.addEventListener('click', () => {
+            updateElementAppearance();
+        });
+    });
+</script>
+<!--{{partial "sub_dark.html" .}}-->
