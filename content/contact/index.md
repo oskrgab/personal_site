@@ -6,6 +6,8 @@ showAuthor: false
 showPagination: false
 showReadingTime: false
 showComments: false
+showTableOfContents: false
 ---
+
 
 {{< contact >}}
