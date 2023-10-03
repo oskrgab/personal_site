@@ -71,14 +71,6 @@ Georgia Institute of Technology<br>
 Escuela Superior Politécnica del Litoral<br>
 03/2008 - 04/2013, Guayaquil, Ecuador
 
-## Certificates
-
-- Importing & Cleaning Data with Python Track (01/2020 - Present)
-- Computing for Data Analysis (05/2021 - Present)
-- Machine Learning by Stanford University on Coursera (09/2016 - Present)
-- Data Manipulation with Python (12/2019 - Present)
-- Python Programming (12/2019 - Present)
-
 ## Publications
 
 - SPE-96734-MS: From Concept to Execution: A Successful Integrated Exploitation Philosophy (09/2019)
