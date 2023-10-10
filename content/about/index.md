@@ -12,7 +12,7 @@ showTableOfContents: false
 ## Hello friend 👋!
 I'm Oscar.
 I am a Reservoir Engineer based in Houston, TX,
-but today I combine it with Data Science and Software Engineering.
+but today I combine it with Data Science and Software Development.
 I've been in the O&G industry for more than a decade now, and I'm currently working on 
 CCS consulting projects, crafting custom software solutions and using advanced 
 analytics to aid decision-making using domain expertise.
