@@ -11,28 +11,28 @@ showTableOfContents: false
 
 ## Hello friend 👋!
 I'm Oscar.
-I am a Reservoir Engineer by training, but today I combine it with Data Science 
-and Software Engineering.
+I am a Reservoir Engineer based in Houston, TX,
+but today I combine it with Data Science and Software Engineering.
 I've been in the O&G industry for more than a decade now, and I'm currently working on 
 CCS consulting projects, crafting custom software solutions and using advanced 
 analytics to aid decision-making using domain expertise.
 
 Even though I studied petroleum engineering, computers have always fascinated me since I 
-started gaming on them (anyone remembers EarthSiege 2? 👀). 
+started gaming on them (anyone remembers EarthSiege 2? 👀). This led to a passion for 
+programming, which I've been pursuing as a self-taught skill since I was in college.
 
-Since then, I've worked for a multinational O&G service company, in several roles from 
-reservoir engineer to a software developer to data scientist.
-Today my work revolves around applying machine learning techniques to solve 
-high-dimensional problems and creating surrogate reservoir models for CCS projects.
+Soon after graduation, I started working for a multinational O&G service company 
+performing different tasks including reservoir engineering, field development planning, 
+software development, data science as well as combining all of them!
 
 My tool of choice is Python 🐍, but my journey has led me to explore various technologies 
 and methodologies, including Git, DevOps, Agile Software Development, and Cloud 
-Technologies. I'm also currently expanding my skillset while pursuing my Master's 
-Degree in Analytics at Georgia Tech.
+Technologies. I also took a deep dive into Data Science and finally completed my Master's 
+Degree in Analytics at Georgia Tech in March 2023.
 
 When I'm not glued to my computer screen 👀, I enjoy spending time with my family 👨‍👩‍👦‍👦 and 
-playing tennis 🎾. Feel free to get in touch with me [here](/contact) 
-for questions, project discussions, networking, or just to say hi 😀.
+playing tennis 🎾, so if you want to play match or talk about software, data science or 
+petroleum engineering, feel free to get in touch with me [here](/contact) 🙂.
 
 ## Why this blog?
 Throughout my journey in technology and engineering, I've discovered the immense value 
