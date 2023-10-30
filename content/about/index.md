@@ -35,20 +35,25 @@ playing tennis 🎾, so if you want to play match or talk about software, data s
 petroleum engineering, feel free to get in touch with me [here](/contact) 🙂.
 
 ## Why this blog?
-Throughout my journey in technology and engineering, I've discovered the immense value 
-of knowledge sharing. Whether it's struggles, insights, or exciting findings, sharing 
-our experiences can help others on a similar path.
+Throughout this journey in engineering and software, I've discovered the immense value 
+of what a domain expert can do using the right set of tools. 
+
+Domain experts (electrical, civil, petroleum, finance, etc) have the unique advantage of 
+knowing their field and quickly find solutions that actually solve problems. 
+However, many are hesitant to start coding, or developing software around those solutions 
+because there are just so many tools out there, and it's hard to know where to start.
 
 That's where this blog comes in.
 
 My focus here is software development and data science, all through the lens of an 
 engineer.
 I've grappled with finding the right tools and techniques to build domain-heavy 
-applications and this blog is my attempt to document and share those experiences.
+ applications, and this blog is my attempt to document and share those experiences.
 
 Here, I discuss not just coding, but the other critical aspects that go into creating 
 quality software – DevOps, Agile methodologies, and Cloud technologies. I also plan to 
-share insights from my ongoing journey in Analytics at Georgia Tech.
+share insights in the applications of analytics, and we the engineers use it in our 
+day-to-day job.
 
 My aim is to help fellow engineers and consultants to leverage their domain expertise to 
 create valuable solutions. If you're an engineer, a data scientist, a tech enthusiast, 
