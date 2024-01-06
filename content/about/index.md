@@ -31,7 +31,7 @@ Technologies. I also took a deep dive into Data Science and finally completed my
 Degree in Analytics at Georgia Tech in March 2023.
 
 When I'm not glued to my computer screen 👀, I enjoy spending time with my family 👨‍👩‍👦‍👦 and 
-playing tennis 🎾, so if you want to play match or talk about software, data science or 
+playing tennis 🎾, so if you want to play a match or talk about software, data science or 
 petroleum engineering, feel free to get in touch with me [here](/contact) 🙂.
 
 ## Why this blog?
@@ -52,7 +52,7 @@ I've grappled with finding the right tools and techniques to build domain-heavy
 
 Here, I discuss not just coding, but the other critical aspects that go into creating 
 quality software – DevOps, Agile methodologies, and Cloud technologies. I also plan to 
-share insights in the applications of analytics, and we the engineers use it in our 
+share insights on the applications of analytics, and how we the engineers use it in our 
 day-to-day job.
 
 My aim is to help fellow engineers and consultants to leverage their domain expertise to 
