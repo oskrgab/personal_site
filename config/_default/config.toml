@@ -7,7 +7,7 @@ baseURL = "https://oscarcortez.me/"
 defaultContentLanguage = "en"
 
 enableRobotsTXT = true
-paginate = 10
+pagination.pagerSize = 10
 summaryLength = 0
 googleAnalytics = "G-C5D2W5GKJZ"
 

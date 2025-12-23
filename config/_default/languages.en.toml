@@ -15,7 +15,7 @@ title = "Oscar"
    mainSections = ["About", "Blog"]
    description = "Personal Website"
 
-[author]
+[params.author]
    name = "Oscar Cortez"
    image = "img/oscar_1.jpg"
    headline = "Senior Reservoir Engineer | Developer | Data Scientist"
