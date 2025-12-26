@@ -21,14 +21,19 @@
   weight = 10
 
 [[main]]
-  name = "Topics"
-  pageRef = "topics"
-  weight = 20
+  name = "Resume"
+  pageRef = "resume"
+  weight = 15
+
+[[main]]
+    name = "Projects"
+    pageRef = "projects"
+    weight = 20
 
 [[main]]
     name = "Contact"
     pageRef = "contact"
-    weight = 20
+    weight = 30
 
 [[main]]
   identifier = "search"
@@ -41,11 +46,6 @@
 # the copyright notice. Configure as per the main menu above.
 
  [[footer]]
-     name = "Resume"
-     pageRef = "resume"
+     name = "Topics"
+     pageRef = "topics"
      weight = 10
-
-[[footer]]
-    name = "Projects"
-    pageRef = "projects"
-    weight = 20

@@ -12,7 +12,7 @@ title = "Oscar"
 
   dateFormat = "2 January 2006"
 
-   mainSections = ["About", "Blog"]
+   mainSections = ["blog"]
    description = "Personal Website"
 
 [params.author]
