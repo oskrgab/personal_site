@@ -35,3 +35,5 @@ tmp/
 # Environment files
 .env
 .env.local
+
+.mcp.json
