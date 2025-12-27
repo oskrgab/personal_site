@@ -1,5 +1,5 @@
 ---
-title: "Oscar's Resume"
+title: "Resume"
 lastmod: 2025-12-26
 description: "My Resume"
 summary: "My professional qualifications."
