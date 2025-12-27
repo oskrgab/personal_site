@@ -28,15 +28,20 @@ But our industry mostly runs on relational databases (and Excel files 😅).
 From well headers and drilling logs to daily production allocations, the world’s energy data lives in tables.
 
 🚫 You cannot build a robust predictive model if you cannot query the data first.
+
 🚫 You cannot build an automated dashboard if you cannot join the tables.
+
 🚫 You cannot be a "Data Scientist" if you are dependent on someone else to get the data for you.
 
 SQL is a gatekeeper.
 
 Abraham Lincoln once said:
 Give me six hours to chop down a tree and I will spend the first four sharpening the axe.
+
 In our world:
+
 The Tree = The predictive model / The dashboard / The insight
+
 The Axe = SQL and Data Preparation
 
 If you skip the sharpening, you’re just hitting a tree with a dull piece of metal.

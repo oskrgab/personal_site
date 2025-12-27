@@ -5,7 +5,7 @@ draft: false
 description: "How to move beyond visual semi-log plots and use residuals to ensure technical integrity in your decline curve analysis."
 topics: ["oil-and-gas", "time-series", "opinion"]
 ---
-![Post Image](thumbnail.jpg)
+![Post Image](four_scenarios.png)
 
 Your production forecast is likely launching from the wrong point.
 
@@ -31,8 +31,9 @@ If the residuals at the end of the production history are not centered around ze
 
 💬 When manually fitting curves for production forecasting, do you rely primarily on the visual match, or do you utilize a specific error metric to confirm the technical accuracy of your final curve?
 
+Here is the code to create the figure above:
 
-
+<script src="https://gist.github.com/oskrgab/2835d497a45431d4f092f72e6135a6ff.js"></script>
 
 
 {{< subscription >}}
