@@ -2,7 +2,7 @@
 title: "From Excel to SQLite: Building a Reproducible Oil & Gas Production Database"
 date: 2025-12-29T12:01:00
 draft: false
-description: "How SQL is still relevant today."
+description: "A step-by-step guide on transforming the Equinor Volve production dataset from Excel into a structured SQLite database using Python, SQLAlchemy Core, and DuckDB."
 topics: ["excel", "opinion"]
 ---
 
