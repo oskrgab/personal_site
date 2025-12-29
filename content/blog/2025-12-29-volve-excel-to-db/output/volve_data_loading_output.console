@@ -1,0 +1,30 @@
+================================================================================
+VOLVE PRODUCTION DATA ETL PIPELINE
+================================================================================
+Source: data/production/Volve production data.xlsx
+Target: database/volve.db
+
+Loading Excel file: Daily Production Data, Monthly Production Data
+
+[1/3] Loading wells...
+✓ Loaded 7 records into wells
+[2/3] Loading daily_production...
+✓ Loaded 15,634 records into daily_production
+[3/3] Loading monthly_production...
+✓ Loaded 526 records into monthly_production
+
+================================================================================
+DATA VALIDATION
+================================================================================
+   ✓ All daily production records have valid well references
+   ✓ All monthly production records have valid well references
+   ✓ No duplicate primary keys in daily_production
+   ✓ No duplicate primary keys in monthly_production
+
+================================================================================
+ETL PIPELINE COMPLETE
+================================================================================
+Wells: 7 | Daily: 15,634 | Monthly: 526
+Validation: ✓ PASSED
+Database: database/volve.db
+================================================================================

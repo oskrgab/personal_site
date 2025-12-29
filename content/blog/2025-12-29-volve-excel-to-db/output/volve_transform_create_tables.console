@@ -1,0 +1,65 @@
+VOLVE PRODUCTION DATABASE SCHEMA
+================================================================================
+
+1. WELLS (Master Table)
+   Purpose: One row per unique wellbore
+   Primary Key: npd_wellbore_code
+   Columns:
+     - npd_wellbore_code (INTEGER, PK)
+     - wellbore_code (TEXT)
+     - wellbore_name (TEXT)
+     - npd_field_code (INTEGER)
+     - npd_field_name (TEXT)
+     - npd_facility_code (INTEGER)
+     - npd_facility_name (TEXT)
+
+2. DAILY_PRODUCTION (Time-Series Table)
+   Purpose: Daily production measurements per wellbore
+   Primary Key: (date, npd_wellbore_code)
+   Foreign Key: npd_wellbore_code -> wells.npd_wellbore_code
+   Columns:
+     - date (DATE)
+     - npd_wellbore_code (INTEGER, FK)
+     - Operational metrics (17 columns)
+     - Production volumes (4 columns)
+   Indexes:
+     - ix_daily_date
+     - ix_daily_wellbore
+
+3. MONTHLY_PRODUCTION (Time-Series Table)
+   Purpose: Monthly production aggregates per wellbore
+   Primary Key: (date, npd_wellbore_code)
+   Foreign Key: npd_wellbore_code -> wells.npd_wellbore_code
+   Columns:
+     - date (DATE, first day of month)
+     - npd_wellbore_code (INTEGER, FK)
+     - on_stream_hours (FLOAT)
+     - Production volumes (3 columns, Sm3)
+     - Injection volumes (2 columns, Sm3)
+   Indexes:
+     - ix_monthly_date
+     - ix_monthly_wellbore
+
+Relationships:
+  wells 1:N daily_production
+  wells 1:N monthly_production
+  (daily_production and monthly_production are independent)
+
+================================================================================
+
+
+================================================================================
+CREATING VOLVE PRODUCTION DATABASE SCHEMA
+================================================================================
+Database: database/volve.db
+2025-12-29 12:18:49,591 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-12-29 12:18:49,591 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("wells")
+2025-12-29 12:18:49,591 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-12-29 12:18:49,591 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("daily_production")
+2025-12-29 12:18:49,591 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-12-29 12:18:49,591 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("monthly_production")
+2025-12-29 12:18:49,591 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-12-29 12:18:49,592 INFO sqlalchemy.engine.Engine COMMIT
+
+✓ Database schema created successfully
+✓ Tables: wells, daily_production, monthly_production
