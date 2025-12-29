@@ -6,7 +6,7 @@ description: "How SQL is still relevant today."
 topics: ["excel", "opinion"]
 ---
 
-![Post Image](img/thumbnail.png)
+![Post Image](thumbnail.png)
 
 
 ## Introduction
