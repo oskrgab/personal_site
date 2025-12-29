@@ -3,7 +3,7 @@ title: "From Excel to SQLite: Building a Reproducible Oil & Gas Production Datab
 date: 2025-12-29T12:01:00
 draft: false
 description: "A step-by-step guide on transforming the Equinor Volve production dataset from Excel into a structured SQLite database using Python, SQLAlchemy Core, and DuckDB."
-topics: ["excel", "opinion"]
+topics: ["python", "data-engineering", "sql", "oil-and-gas"]
 ---
 
 ![Post Image](thumbnail.png)
