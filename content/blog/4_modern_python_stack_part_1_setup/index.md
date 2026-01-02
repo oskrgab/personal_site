@@ -4,185 +4,155 @@ lastmod: 2025-12-23
 date: 2025-12-23
 draft: false
 topics: ["python", "uv", "tooling"]
-summary: "A comprehensive guide to setting up a professional Python project with modern tooling: UV, Ruff, Ty, and Pre-commit."
+summary: "A beginner-friendly guide to setting up a professional Python project with modern tooling: UV, Ruff, Ty, and Pre-commit. Written for engineers who code, not professional developers."
 ---
 
-The python package ecosystem has changed a lot since the last time I attempted to create a Python package.
+If you're an engineer who writes Python scripts to solve problems—whether it's calculating relative permeabilities, modeling heat transfer, or analyzing production data—this guide is for you.
 
-I put myself the challenge for the past couple of weeks to publish a python package with some simple domain-knowledge functionality, in this case, relative permeabilities and capillary pressures in the context of the O&G industry.
+I recently challenged myself to publish a Python package with some petroleum engineering functionality (specifically, relative permeabilities and capillary pressures). Along the way, I discovered how much the Python ecosystem has improved. Gone are the days of wrestling with `pip install` errors and virtual environment headaches.
 
-The purpose of this exercise is to go from having nothing to creating a full project that can be published to PyPI, using a modern tech stack, CI/CD and testing. I want this to serve as a blueprint for future packages that I can build or to help somebody else in the same boat as me.
+This is **Part 1** of a three-part series. Here, we'll focus on *why* we set things up the way we do, and *what* this modern tooling enables. We won't dive into every terminal command—you'll be using VSCode for most of this anyway.
 
-This is **Part 1** of a three-part series, focusing on the local development environment and tooling.
+## Why Should You Care About Any of This?
 
-## Prerequisites
+Let me paint a picture you might recognize: You wrote a Python script six months ago. It worked perfectly. Now you need it again, and... nothing works. Python version mismatch. Missing packages. That one library updated and broke everything.
 
-One of the best things about this modern stack is that you don't even need Python installed on your system to get started! **UV** can handle downloading and managing Python versions for you on a per-project basis.
+Or maybe: You're collaborating with a colleague. They send you their script. It doesn't run on your machine because they have different packages installed.
 
-Before we begin, ensure you have:
+**Modern Python tooling solves these problems.** Here's what we're setting up and why:
 
-- **Git** installed ([git-scm.com](https://git-scm.com))
-- **GitHub account** ([github.com](https://github.com))
-- **GitHub CLI** (optional but recommended): `gh` ([cli.github.com](https://cli.github.com))
+| Tool | What It Does | Why You Care |
+|------|--------------|--------------|
+| **UV** | Manages Python versions and packages | "It just works" on any machine |
+| **Git + GitHub** | Tracks changes, enables collaboration | Never lose your work, easy sharing |
+| **Ruff** | Checks and formats your code | Catch bugs before they bite |
+| **Ty** | Checks your types | Find mistakes before running code |
+| **Pre-commit** | Runs checks automatically | Enforces quality without thinking |
 
-Verify your installations:
+## Version Control: Your Safety Net
 
-```bash
-git --version     # Should show git version
-gh --version      # (optional) Should show gh version
-```
+Before we talk about Python tools, let's address something fundamental: **version control with Git**.
 
-![Screenshot: Terminal showing version checks for git, and gh]
+If you've ever had files named `script_v2_final_FINAL_actually_final.py`, you understand the problem Git solves.
 
-## Installing UV - The Modern Python Package Manager
+### What Git Actually Does For You
 
-### What is UV?
+Think of Git as an "infinite undo" for your entire project:
 
-**UV** is a blazingly fast Python package manager written in Rust. It's a modern replacement for `pip`, `poetry`, and `virtualenv` combined. Think of it as "Cargo for Python" - it handles:
+- **Track every change**: See exactly what you modified and when
+- **Experiment freely**: Try new approaches without fear—you can always go back
+- **Collaborate**: Multiple people can work on the same project without overwriting each other
+- **Backup**: Your code lives on GitHub, not just your laptop
 
-- 🚀 **Dependency management** (10-100x faster than pip)
-- 📦 **Virtual environment creation**
-- 🔧 **Project scaffolding**
-- 🏗️ **Building and publishing packages**
-- 🔒 **Lock files** for reproducible environments
+### GitHub: Git in the Cloud
 
-### Why UV over pip/poetry?
+GitHub is where your Git repository lives online. It provides:
 
-| Feature | pip | poetry | UV |
-|---------|-----|--------|-----|
-| Speed | Slow | Medium | **Extremely Fast** |
-| Lock files | ❌ | ✅ | ✅ |
-| Build backend | ❌ | ✅ | ✅ |
-| Virtual envs | Manual | Built-in | Built-in |
-| Resolver | Sometimes fails | Good | **Excellent** |
+- **Backup**: Your laptop could die tomorrow and your code survives
+- **Sharing**: Send a link instead of a zip file
+- **Automation**: Run tests and checks automatically (more on this in Part 2)
+- **Publishing**: Host your documentation and release your package
 
-### Installing UV
+**Screenshot suggestion 1**: GitHub repository page showing the relperm project with the green "Code" button and file listing.
 
-**macOS/Linux:**
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
+## Installing UV: The Modern Python Manager
 
-**Windows (PowerShell):**
-```powershell
-powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
-```
+UV is a game-changer. It's a single tool that replaces the confusing mix of `pip`, `virtualenv`, `poetry`, and `conda` that used to be the Python experience.
 
-**Verify installation:**
-```bash
-uv --version
-```
+### Why UV Over the Old Way?
 
-![Screenshot: Terminal showing successful UV installation and version]
+Remember these frustrations?
 
-### Basic UV Commands (Quick Reference)
+- "Which Python version is installed?" (trick question—you probably have 5)
+- "Is my virtual environment activated?"
+- "Why does `pip install` take forever?"
+- "Works on my machine..."
 
-Before we dive in, here are the essential UV commands you'll use:
+UV eliminates all of this:
 
 ```bash
-# Initialize a new project
-uv init <project-name>
-
-# Sync dependencies (install/update)
-# This will automatically download the required Python version!
-uv sync
-
-# Install a specific Python version manually
-uv python install 3.12
-
-# List available and installed Python versions
-uv python list
-
-# Add a dependency
-uv add <package-name>
-
-# Add a dev dependency
-uv add --dev <package-name>
-
-# Run a command in the project environment
-uv run <command>
-
-# Build the package
-uv build
-
-# Update dependencies
-uv sync --upgrade
+# Install UV (one-time setup)
+curl -LsSf https://astral.sh/uv/install.sh | sh  # macOS/Linux
 ```
 
-## Creating the Project Structure
+That's it. UV now handles:
+- **Python versions**: Automatically downloads the right Python for each project
+- **Virtual environments**: Created and managed for you
+- **Package installation**: 10-100x faster than pip (seriously)
+- **Lock files**: Guarantees everyone uses identical package versions
 
-### Step 1: Create Project Directory
+**Screenshot suggestion 2**: Terminal showing `uv --version` output after successful installation.
 
-Let's create a Python library called `relperm` (relative permeability calculations for petroleum engineering):
+## Creating Your Project
+
+With UV installed, creating a new project is simple:
 
 ```bash
-# Navigate to your projects directory
-cd ~/Documents/code
-
-# Initialize the project with UV
 uv init relperm
 cd relperm
 ```
 
-UV creates this initial structure:
+UV creates your starter files:
 
 ```
 relperm/
-├── .python-version    # Specifies Python version
-├── README.md          # Project description
-├── pyproject.toml     # Project configuration
-└── hello.py           # Example file (we'll replace this)
+├── .python-version    # Which Python version to use
+├── pyproject.toml     # Project configuration (we'll explore this)
+├── README.md          # Description of your project
+└── main.py            # A starter script
 ```
 
-![Screenshot: File explorer showing the initial project structure created by UV]
+Here's what the initial `pyproject.toml` looks like—UV created this for us:
 
-### Step 2: Organize for a Library
-
-We'll reorganize to follow Python packaging best practices using the `src` layout:
-
-```bash
-# Create src layout (recommended for libraries)
-mkdir -p src/relperm
-mkdir -p tests
-mkdir -p docs
-mkdir -p .github/workflows
-
-# Remove the example file
-rm hello.py
-
-# Create package files
-touch src/relperm/__init__.py
-touch src/relperm/relperm.py
-touch tests/__init__.py
-touch tests/test_relperm.py
+```toml
+[project]
+name = "relperm"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
 ```
 
-Your structure should now look like:
+This one file defines your entire project. No more scattered `requirements.txt`, `setup.py`, and `setup.cfg` files.
+
+## The Project Structure: Why It Matters
+
+Now let's organize the project properly. Here's the structure we're building toward:
 
 ```
 relperm/
-├── .github/
-│   └── workflows/        # CI/CD workflows (we'll populate this in Part 2)
-├── .python-version       # Python version constraint
 ├── src/
-│   └── relperm/          # Source code
+│   └── relperm/          # Your actual code lives here
 │       ├── __init__.py
 │       └── relperm.py
-├── tests/                # Test suite
-│   ├── __init__.py
+├── tests/                # Tests for your code
 │   └── test_relperm.py
-├── docs/                 # Documentation (we'll populate this in Part 2)
-├── pyproject.toml        # Project config
+├── docs/                 # Documentation
+│   └── index.md
+├── .github/
+│   └── workflows/        # Automation (Part 2)
+├── pyproject.toml        # The single source of truth
 └── README.md
 ```
 
-![Screenshot: File tree showing the complete project structure]
+### Why This Structure?
 
-## Initializing the Python Project
+**The `src/` layout**: Your code goes inside `src/relperm/`, not at the root. This prevents a subtle but common bug where tests accidentally import from your local folder instead of the installed package. Trust me, this saves headaches.
 
-### Step 3: Configure pyproject.toml
+**The `tests/` directory**: Keeps your tests separate from your code. You write tests to verify your equations and calculations work correctly—especially important for engineering code where mistakes can be costly.
 
-The `pyproject.toml` file is the heart of your Python project. Open `pyproject.toml` and replace it with:
+**The `docs/` directory**: Documentation lives here. We'll use a tool called MkDocs that turns simple markdown files into a beautiful website (for free!).
+
+**The `.github/workflows/` directory**: Automation scripts that run on GitHub. Every time you push code, GitHub can automatically run your tests and check for errors. We'll set this up in Part 2.
+
+**Screenshot suggestion 3**: VSCode Explorer panel showing the complete project structure with folders expanded.
+
+## Adding Development Tools
+
+Here's where it gets interesting. We're going to add tools that automatically catch bugs and format our code. First, let's add them to our project.
+
+In VSCode, open `pyproject.toml` and add a `dependency-groups` section:
 
 ```toml
 [project]
@@ -191,24 +161,9 @@ version = "0.1.0"
 description = "Relative permeability correlations for petroleum engineering"
 readme = "README.md"
 requires-python = ">=3.12"
-authors = [
-    { name = "Your Name", email = "your.email@example.com" }
-]
-classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Intended Audience :: Science/Research",
-    "Topic :: Scientific/Engineering",
-    "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python :: 3.12",
-]
 dependencies = [
     "numpy>=2.3.2",
 ]
-
-[project.urls]
-Homepage = "https://github.com/yourusername/relperm"
-Repository = "https://github.com/yourusername/relperm"
-Documentation = "https://yourusername.github.io/relperm"
 
 [build-system]
 requires = ["uv_build>=0.8.14,<0.9.0"]
@@ -217,150 +172,37 @@ build-backend = "uv_build"
 [dependency-groups]
 dev = [
     "pytest>=8.4.2",
-    "pytest-cov>=6.0.0",
     "ruff>=0.14.10",
     "ty>=0.0.5",
     "pre-commit>=4.5.1",
-    "mkdocs>=1.6.1",
-    "mkdocs-material>=9.7.1",
-    "mkdocstrings>=1.0.0",
-    "mkdocstrings-python>=2.0.1",
 ]
 ```
 
-**Key sections explained:**
-- **`[project]`**: Metadata about your package
-- **`dependencies`**: Runtime dependencies (only NumPy for our library)
-- **`[dependency-groups]`**: Development dependencies (testing, linting, docs)
-- **`[build-system]`**: Uses UV's build backend
-
-### Step 4: Install Dependencies
+Then install everything:
 
 ```bash
-# Sync all dependencies (creates virtual environment automatically)
 uv sync
 ```
 
-**Note:** If you don't have the required Python version (3.12+ as specified in our `pyproject.toml`), `uv` will automatically download it for you during this step! No more worrying about system-wide Python installations.
+UV creates a virtual environment, downloads the right Python version if needed, and installs all dependencies. One command. No activation needed.
 
-This creates the `.venv/` directory and `uv.lock` file, ensuring everyone works with the same versions.
+### What These Tools Do
 
-![Screenshot: Terminal showing `uv sync` output with dependency installation]
+**Pytest**: Runs your tests. You write small functions that verify your calculations are correct.
 
-## Setting Up Git and GitHub
+**Ruff**: This is like having a code reviewer looking over your shoulder. It catches:
+- Unused imports and variables
+- Common bugs and gotchas
+- Style inconsistencies
+- Missing documentation
 
-### Initialize Git Repository
+**Ty**: Checks that your types make sense. If you pass a string where a number is expected, Ty catches it before you run the code.
 
-```bash
-# Initialize git
-git init
+**Pre-commit**: The enforcer. Runs Ruff and other checks automatically every time you commit. You literally cannot commit bad code.
 
-# Create .gitignore (make sure to exclude .venv, __pycache__, etc.)
-cat > .gitignore << 'EOF'
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+## Configuring Ruff: The Linter
 
-# Virtual Environment
-.venv/
-venv/
-ENV/
-env/
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Documentation
-site/
-docs/_build/
-
-# OS
-.DS_Store
-Thumbs.db
-EOF
-
-# Initial commit
-git add .
-git commit -m "Initial project structure"
-```
-
-![Screenshot: Terminal showing git init and initial commit]
-
-### Create GitHub Repository
-
-**Option A: Using GitHub CLI (Recommended)**
-
-```bash
-# Login to GitHub (if not already)
-gh auth login
-
-# Create repository (public)
-gh repo create relperm --public --source=. --remote=origin
-
-# Push to GitHub
-git push -u origin main
-```
-
-**Option B: Using GitHub Web Interface**
-
-1. Go to [github.com/new](https://github.com/new)
-2. Repository name: `relperm`
-3. Description: "Relative permeability correlations for petroleum engineering"
-4. Select **Public**
-5. **Do NOT initialize** with README (we already have one)
-6. Click "Create repository"
-
-## Installing Development Tools
-
-Now let's install and configure the tools that enforce code quality.
-
-### Understanding the Tool Stack
-
-| Tool | Purpose | Why We Need It |
-|------|---------|----------------|
-| **pytest** | Testing framework | Write and run tests |
-| **pytest-cov** | Coverage reporting | Measure test coverage |
-| **ruff** | Linter & formatter | Enforce code style, catch bugs |
-| **ty** | Type checker | Catch type errors (Pyright-based) |
-| **pre-commit** | Git hooks | Run checks before commits |
-| **mkdocs** | Documentation | Generate beautiful docs |
-
-All these are already in our `pyproject.toml` under `[dependency-groups]` and were installed with `uv sync`.
-
-## Configuring Code Quality Tools
-
-### Configure Ruff (Linter & Formatter)
-
-**What is Ruff?**
-Ruff is an extremely fast Python linter and formatter (written in Rust). It replaces `black` (formatting), `flake8` (linting), `isort` (import sorting), and `pyupgrade`.
-
-Add this to `pyproject.toml`:
+Add this configuration to your `pyproject.toml`:
 
 ```toml
 [tool.ruff]
@@ -368,90 +210,56 @@ line-length = 88
 target-version = "py312"
 
 [tool.ruff.lint]
-# Enable comprehensive rule sets
 select = [
-    "E",    # pycodestyle errors
-    "F",    # pyflakes
-    "I",    # isort (import sorting)
-    "B",    # flake8-bugbear (catches subtle bugs)
-    "UP",   # pyupgrade (modern Python syntax)
-    "N",    # pep8-naming (naming conventions)
-    "D",    # pydocstyle (docstring enforcement)
-    "NPY",  # NumPy-specific rules
-    "PT",   # flake8-pytest-style
-    "RUF",  # Ruff-specific rules
-    "SIM",  # flake8-simplify
+    "E",    # Style errors
+    "F",    # Logic errors
+    "I",    # Import sorting
+    "B",    # Common bugs
+    "UP",   # Modern Python syntax
+    "N",    # Naming conventions
+    "D",    # Docstrings (documentation)
+    "NPY",  # NumPy best practices
 ]
-ignore = ["D100", "D104"]
+ignore = ["D100", "D104"]  # Don't require docstrings for modules
 
 [tool.ruff.lint.pydocstyle]
-convention = "numpy"
+convention = "numpy"  # Use NumPy-style docstrings
 
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
 ```
 
-**Test Ruff:**
+Now you can run:
 
 ```bash
-# Format code
-uv run ruff format .
-
-# Check for issues
-uv run ruff check .
-
-# Auto-fix issues
-uv run ruff check --fix .
+uv run ruff check .      # Find issues
+uv run ruff check --fix . # Auto-fix what it can
+uv run ruff format .     # Format your code consistently
 ```
 
-### Configure Ty (Type Checker)
+**Screenshot suggestion 4**: VSCode with a Python file open showing Ruff squiggly underlines highlighting issues, with the Problems panel open at the bottom.
 
-**What is Ty?**
-Ty is a fast type checker for Python based on Pyright. It catches type-related bugs before runtime.
+## Configuring Ty: The Type Checker
 
-Add this to `pyproject.toml`:
+Add this simple configuration:
 
 ```toml
 [tool.ty.environment]
 python-version = "3.12"
-
-[tool.ty.rules]
-# Enforce type checking
-# Start lenient, increase strictness over time
 ```
 
-### Configure Pytest
+Run it with:
 
-Add this to `pyproject.toml`:
-
-```toml
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-python_files = ["test_*.py"]
-python_classes = ["Test*"]
-python_functions = ["test_*"]
-addopts = [
-    "--strict-markers",
-    "--strict-config",
-    "--cov=relperm",
-    "--cov-report=term-missing",
-    "--cov-report=html",
-]
-
-[tool.coverage.run]
-source = ["src"]
-
-[tool.coverage.report]
-# Require at least 90% test coverage
-fail_under = 90
+```bash
+uv run ty check
 ```
 
-## Configuring Pre-commit Hooks
+Ty reads your type hints (like `def calculate(x: float) -> float:`) and verifies they're consistent throughout your code.
 
-Pre-commit hooks run checks **before** you commit, catching issues early.
+## Pre-commit: Automatic Quality Checks
 
-Create `.pre-commit-config.yaml`:
+Create a file called `.pre-commit-config.yaml` in your project root:
 
 ```yaml
 repos:
@@ -468,21 +276,59 @@ repos:
       - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: check-yaml
-      - id: check-added-large-files
       - id: check-toml
 ```
 
-**Install and Run:**
+Install the hooks:
 
 ```bash
 uv run pre-commit install
-uv run pre-commit run --all-files
 ```
 
-Now, every time you `git commit`, these checks run automatically!
+Now, every time you try to commit code, these checks run automatically. If something fails, the commit is blocked until you fix it. This sounds strict, but it's actually liberating—you never have to worry about committing broken code.
 
-![Screenshot: Terminal showing pre-commit hooks running on commit]
+**Screenshot suggestion 5**: Terminal showing pre-commit hooks running on a commit, with green "Passed" indicators for each check.
 
-## Conclusion
+## Pushing to GitHub
 
-We now have a professional local development environment setup. In [Part 2]({{< ref "blog/5_modern_python_stack_part_2_cicd" >}}), we'll set up GitHub Actions for CI/CD, creating documentation, and publishing our first release.
+If you have the GitHub CLI installed, creating your repository is simple:
+
+```bash
+git init
+git add .
+git commit -m "Initial project structure"
+gh repo create relperm --public --source=. --push
+```
+
+Your code is now on GitHub, backed up and ready to share.
+
+## What We've Accomplished
+
+Let's step back and appreciate what we have:
+
+1. **Reproducible environment**: Anyone can clone your repo, run `uv sync`, and get the exact same setup
+2. **Automatic quality checks**: Ruff catches bugs, Ty catches type errors, pre-commit enforces both
+3. **Professional structure**: Your code is organized in a way that scales and follows Python best practices
+4. **Version control**: Every change is tracked, you can collaborate, and your work is backed up
+
+This might seem like a lot of setup for "just a Python script." But this foundation pays dividends:
+
+- Your code works months later
+- Others can use and contribute to your work
+- You catch bugs before they cause problems
+- Publishing to PyPI becomes straightforward (Part 3)
+
+## Coming Up in Part 2
+
+In the next post, we'll set up:
+- **GitHub Actions**: Automated testing on every push
+- **MkDocs**: Turn your docstrings into a beautiful documentation website
+- **Coverage reports**: See which parts of your code are tested
+
+The goal is a fully automated pipeline: push code, tests run, documentation updates, and eventually, your package publishes to PyPI automatically.
+
+See you in Part 2!
+
+---
+
+*This post is part of a series documenting the creation of [relperm](https://github.com/oskrgab/relperm), a Python library for petroleum engineering relative permeability calculations.*
