@@ -4,8 +4,10 @@ lastmod: 2025-12-23
 date: 2025-12-23
 draft: false
 topics: ["python", "uv", "tooling"]
-summary: "A beginner-friendly guide to setting up a professional Python project with modern tooling: UV, Ruff, Ty, and Pre-commit. Written for engineers who code, not professional developers."
+summary: "A beginner-friendly guide to setting up a professional Python project with modern tooling: uv, ruff, ty, and pre-commit. Written for engineers who code, not professional developers."
 ---
+
+![The modern Python Stack](img/0_python_stack_part_1_resized.png)
 
 If you're an engineer who writes Python scripts to solve problems—whether it's calculating relative permeabilities, modeling heat transfer, or analyzing production data—this guide is for you.
 
@@ -23,11 +25,11 @@ Or maybe: You're collaborating with a colleague. They send you their script. It 
 
 | Tool | What It Does | Why You Care |
 |------|--------------|--------------|
-| **UV** | Manages Python versions and packages | "It just works" on any machine |
+| **uv** | Manages Python versions and packages | "It just works" on any machine |
 | **Git + GitHub** | Tracks changes, enables collaboration | Never lose your work, easy sharing |
-| **Ruff** | Checks and formats your code | Catch bugs before they bite |
-| **Ty** | Checks your types | Find mistakes before running code |
-| **Pre-commit** | Runs checks automatically | Enforces quality without thinking |
+| **ruff** | Checks and formats your code | Catch bugs before they bite |
+| **ty** | Checks your types | Find mistakes before running code |
+| **pre-commit** | Runs checks automatically | Enforces quality without thinking |
 
 ## Version Control: Your Safety Net
 
@@ -46,18 +48,22 @@ Think of Git as an "infinite undo" for your entire project:
 
 ### GitHub: Git in the Cloud
 
+![relperm github repo](img/1_github_relperm_repo.png "[relperm](https://github.com/oskrgab/relperm) Github Repository")
+
 GitHub is where your Git repository lives online. It provides:
 
 - **Backup**: Your laptop could die tomorrow and your code survives
 - **Sharing**: Send a link instead of a zip file
-- **Automation**: Run tests and checks automatically (more on this in Part 2)
+- **Automation**: Run tests and checks automatically (more on this in Part 3)
 - **Publishing**: Host your documentation and release your package
 
-**Screenshot suggestion 1**: GitHub repository page showing the relperm project with the green "Code" button and file listing.
+![Commit history on Github](img/2_github_commit_history.png "Commit history on Github of [relperm](https://github.com/oskrgab/relperm) project")
 
 ## Installing UV: The Modern Python Manager
 
-UV is a game-changer. It's a single tool that replaces the confusing mix of `pip`, `virtualenv`, `poetry`, and `conda` that used to be the Python experience.
+![uv features](img/3_uv_features.png "[uv](https://docs.astral.sh/uv/) features")
+
+UV is a significant improvement. It's a single tool that replaces the confusing mix of `pip`, `virtualenv`, `poetry`, and `conda` that used to be the Python experience.
 
 ### Why UV Over the Old Way?
 
@@ -75,13 +81,11 @@ UV eliminates all of this:
 curl -LsSf https://astral.sh/uv/install.sh | sh  # macOS/Linux
 ```
 
-That's it. UV now handles:
+That's it. uv now handles:
 - **Python versions**: Automatically downloads the right Python for each project
 - **Virtual environments**: Created and managed for you
 - **Package installation**: 10-100x faster than pip (seriously)
 - **Lock files**: Guarantees everyone uses identical package versions
-
-**Screenshot suggestion 2**: Terminal showing `uv --version` output after successful installation.
 
 ## Creating Your Project
 
@@ -131,7 +135,7 @@ relperm/
 ├── docs/                 # Documentation
 │   └── index.md
 ├── .github/
-│   └── workflows/        # Automation (Part 2)
+│   └── workflows/        # Automation (Part 3)
 ├── pyproject.toml        # The single source of truth
 └── README.md
 ```
@@ -140,34 +144,144 @@ relperm/
 
 **The `src/` layout**: Your code goes inside `src/relperm/`, not at the root. This prevents a subtle but common bug where tests accidentally import from your local folder instead of the installed package. Trust me, this saves headaches.
 
+Relative permeabily correlations and equations are quite straightforward. I created a `relperm.py` where I added the following functions:
+
+```python
+import numpy as np
+import numpy.typing as npt
+
+def s_eff(
+    sw: npt.NDArray[np.float64], swr: np.float64, snwr: np.float64
+) -> npt.NDArray[np.float64]:
+
+    s_eff_array = (sw - swr) / (1 - swr - snwr)
+
+    return s_eff_array
+
+
+def krw(
+    s_eff: npt.NDArray[np.float64], krw0: np.float64, nw: np.float64
+) -> npt.NDArray[np.float64]:
+
+    krw_array = krw0 * s_eff**nw
+
+    return krw_array
+```
+
+We'll use these functions as an example to create tests and documentation later on.
+
 **The `tests/` directory**: Keeps your tests separate from your code. You write tests to verify your equations and calculations work correctly—especially important for engineering code where mistakes can be costly.
 
-**The `docs/` directory**: Documentation lives here. We'll use a tool called MkDocs that turns simple markdown files into a beautiful website (for free!).
+For this quick example we wrote two tests in `test_relperm.py`:
 
-**The `.github/workflows/` directory**: Automation scripts that run on GitHub. Every time you push code, GitHub can automatically run your tests and check for errors. We'll set this up in Part 2.
+```python
+import numpy as np
 
-**Screenshot suggestion 3**: VSCode Explorer panel showing the complete project structure with folders expanded.
+from relperm.relperm import krw, s_eff
+
+
+def test_s_eff_basic():
+    """Test effective saturation calculation with basic inputs."""
+    sw = np.array([0.3, 0.5, 0.7])
+    swr = np.float64(0.2)
+    snwr = np.float64(0.1)
+    result = s_eff(sw, swr, snwr)
+    expected = np.array([0.142857, 0.428571, 0.714286])
+    np.testing.assert_allclose(result, expected, rtol=1e-5)
+
+
+def test_krw_basic():
+    """Test water relative permeability calculation with basic inputs."""
+    s_eff_values = np.array([0.0, 0.5, 1.0])
+    krw0 = np.float64(0.8)
+    nw = np.float64(2.0)
+    result = krw(s_eff_values, krw0, nw)
+    expected = np.array([0.0, 0.2, 0.8])
+    np.testing.assert_allclose(result, expected, rtol=1e-5)
+```
+
+You can now go to your terminal and run:
+
+```bash
+uv run pytest
+```
+
+Or, right click on your test folder and select "Run Tests""
+
+![Running tests is VSCode](img/5_tests_vs_code.png "Running tests is VSCode")
+
+You will see an output in your dedicated "Test Results" window in VSCode:
+
+![Test Results](img/6_tests_results.png "Test Results")
+
+**The `docs/` directory**: Documentation lives here. We'll use a tool called MkDocs that turns simple markdown files into a beautiful website (for free!). We will have a deep dive into this in Part 2, but for now, just know that the purpose is to add some docstrings to our code, like the following:
+
+```python
+def s_eff(
+    sw: npt.NDArray[np.float64], swr: np.float64, snwr: np.float64
+) -> npt.NDArray[np.float64]:
+    r"""Calculate the effective wetting phase saturation.
+
+    Parameters
+    ----------
+    sw : npt.NDArray[np.float64]
+        Wetting phase saturation array.
+    swr : np.float64
+        Residual wetting phase saturation.
+    snwr : np.float64
+        Residual non-wetting phase saturation.
+
+    Returns
+    -------
+    npt.NDArray[np.float64]
+        Effective wetting phase saturation array.
+
+    Notes
+    -----
+    The effective saturation ($S_{eff}$) is calculated using the formula:
+
+    $$S_{eff} = \frac{S_w - S_{wr}}{1 - S_{wr} - S_{nwr}}$$
+
+    where:
+
+    - $S_w$: Wetting phase saturation.
+    - $S_{wr}$: Residual wetting phase saturation.
+    - $S_{nwr}$: Residual non-wetting phase saturation.
+    """
+    s_eff_array = (sw - swr) / (1 - swr - snwr)
+
+    return s_eff_array
+```
+
+And have it automatically rendered in a beautiful style like this:
+
+![Docs preview](img/7_docs_preview.png "relperm [documentation](https://relperm.ocortez.com/api/)")
+
+
+**The `.github/workflows/` directory**: Automation scripts that run on GitHub. Every time you push code, GitHub can automatically run your tests and check for errors. We'll set this up in Part 3, but here is a sneak peak on how that looks like when a new PR is merged into main:
+
+![Github action](img/8_github_actions.png "Github Actions in relperm repo")
+
 
 ## Adding Development Tools
 
-Here's where it gets interesting. We're going to add tools that automatically catch bugs and format our code. First, let's add them to our project.
+Here's where it gets interesting. We're going to add tools that automatically catch bugs and format our code. 
 
-In VSCode, open `pyproject.toml` and add a `dependency-groups` section:
+While you can manually edit `pyproject.toml`, the easiest way is to use the terminal. UV makes it simple to add tools specifically for development:
+
+```bash
+uv add --dev pytest ruff ty pre-commit
+```
+
+This command automatically updates your `pyproject.toml` and adds a `dependency-groups` section:
 
 ```toml
 [project]
 name = "relperm"
-version = "0.1.0"
-description = "Relative permeability correlations for petroleum engineering"
-readme = "README.md"
-requires-python = ">=3.12"
+# ... other project settings ...
 dependencies = [
     "numpy>=2.3.2",
 ]
-
-[build-system]
-requires = ["uv_build>=0.8.14,<0.9.0"]
-build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
@@ -178,27 +292,27 @@ dev = [
 ]
 ```
 
-Then install everything:
+After adding them, ensure everything is in sync:
 
 ```bash
 uv sync
 ```
 
-UV creates a virtual environment, downloads the right Python version if needed, and installs all dependencies. One command. No activation needed.
+uv creates a virtual environment, downloads the right Python version if needed, and installs all dependencies. One command. No activation needed.
 
 ### What These Tools Do
 
-**Pytest**: Runs your tests. You write small functions that verify your calculations are correct.
+**pytest**: Runs your tests. You write small functions that verify your calculations are correct.
 
-**Ruff**: This is like having a code reviewer looking over your shoulder. It catches:
+**ruff**: This is like having a code reviewer looking over your shoulder. It catches:
 - Unused imports and variables
 - Common bugs and gotchas
 - Style inconsistencies
 - Missing documentation
 
-**Ty**: Checks that your types make sense. If you pass a string where a number is expected, Ty catches it before you run the code.
+**ty**: Checks that your types make sense. If you pass a string where a number is expected, Ty catches it before you run the code.
 
-**Pre-commit**: The enforcer. Runs Ruff and other checks automatically every time you commit. You literally cannot commit bad code.
+**pre-commit**: The enforcer. Runs Ruff and other checks automatically every time you commit. You literally cannot commit bad code.
 
 ## Configuring Ruff: The Linter
 
@@ -238,9 +352,7 @@ uv run ruff check --fix . # Auto-fix what it can
 uv run ruff format .     # Format your code consistently
 ```
 
-**Screenshot suggestion 4**: VSCode with a Python file open showing Ruff squiggly underlines highlighting issues, with the Problems panel open at the bottom.
-
-## Configuring Ty: The Type Checker
+## Configuring ty: The Type Checker
 
 Add this simple configuration:
 
@@ -255,9 +367,9 @@ Run it with:
 uv run ty check
 ```
 
-Ty reads your type hints (like `def calculate(x: float) -> float:`) and verifies they're consistent throughout your code.
+ty reads your type hints (like `def calculate(x: float) -> float:`) and verifies they're consistent throughout your code.
 
-## Pre-commit: Automatic Quality Checks
+## pre-commit: Automatic Quality Checks
 
 Create a file called `.pre-commit-config.yaml` in your project root:
 
@@ -287,7 +399,6 @@ uv run pre-commit install
 
 Now, every time you try to commit code, these checks run automatically. If something fails, the commit is blocked until you fix it. This sounds strict, but it's actually liberating—you never have to worry about committing broken code.
 
-**Screenshot suggestion 5**: Terminal showing pre-commit hooks running on a commit, with green "Passed" indicators for each check.
 
 ## Pushing to GitHub
 
@@ -320,12 +431,12 @@ This might seem like a lot of setup for "just a Python script." But this foundat
 
 ## Coming Up in Part 2
 
-In the next post, we'll set up:
-- **GitHub Actions**: Automated testing on every push
-- **MkDocs**: Turn your docstrings into a beautiful documentation website
-- **Coverage reports**: See which parts of your code are tested
+In the next post, we'll focus on **Documentation**:
+- **MkDocs**: Turn your simple markdown files and code comments into a professional website
+- **Material for MkDocs**: Make it look beautiful and modern
+- **Docstrings**: Best practices for documenting your engineering functions
 
-The goal is a fully automated pipeline: push code, tests run, documentation updates, and eventually, your package publishes to PyPI automatically.
+The goal is to make your project easy for others (and your future self) to understand and use. We'll save the automation and CI/CD for Part 3!
 
 See you in Part 2!
 

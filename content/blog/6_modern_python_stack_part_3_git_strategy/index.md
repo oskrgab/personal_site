@@ -2,7 +2,7 @@
 title: "Modern Stack for Python Projects Part 3: Robust Git Strategy"
 lastmod: 2025-12-24
 date: 2025-12-24
-draft: false
+draft: true
 topics: ["git", "python", "automation"]
 summary: "Implementing branch protection, automated quality checks, and PR validation for open-source Python libraries."
 ---

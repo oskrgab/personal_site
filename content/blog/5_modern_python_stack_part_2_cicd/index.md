@@ -2,7 +2,7 @@
 title: "Modern Stack for Python Projects Part 2: CI/CD & Releases"
 lastmod: 2025-12-24
 date: 2025-12-24
-draft: false
+draft: true
 topics: ["python", "cicd", "github-actions"]
 summary: "Setting up automated workflows for quality checks, documentation with MkDocs, and automated PyPI releases."
 ---
