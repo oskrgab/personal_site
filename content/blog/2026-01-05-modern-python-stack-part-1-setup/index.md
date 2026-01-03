@@ -1,6 +1,6 @@
 ---
 title: "Modern Stack for Python Projects Part 1: Setup & Tooling"
-date: 2026-01-05
+date: 2026-01-02
 draft: false
 topics: ["python", "uv", "tooling"]
 summary: "A beginner-friendly guide to setting up a professional Python project with modern tooling: uv, ruff, ty, and pre-commit. Written for engineers who code, not professional developers."
