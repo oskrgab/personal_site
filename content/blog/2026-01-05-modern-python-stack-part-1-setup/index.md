@@ -442,3 +442,6 @@ See you in Part 2!
 ---
 
 *This post is part of a series documenting the creation of [relperm](https://github.com/oskrgab/relperm), a Python library for petroleum engineering relative permeability calculations.*
+
+
+{{< subscription >}}
