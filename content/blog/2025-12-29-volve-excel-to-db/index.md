@@ -607,3 +607,6 @@ This project shows that building data pipelines doesn't require complex framewor
 Whether you're a petroleum engineer looking to modernize your workflows, a data engineer exploring new domains, or a student learning SQL and databases, I hope this walkthrough gives you practical insights you can apply to your own projects.
 
 If you found this useful, feel free to star the repository, fork it, or reach out with questions. Happy data engineering! 🛢️📊
+
+
+{{< subscription >}}
