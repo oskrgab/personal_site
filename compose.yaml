@@ -1,0 +1,29 @@
+# Hugo development server for personal_site
+# Served via Caddy at dev-site.ocortez.com with hot reloading
+#
+# Usage:
+#   Start dev server:  docker compose up --build
+#   Stop:              docker compose down
+#   Rebuild:           docker compose up --build --force-recreate
+#
+# Note: This runs Hugo's development server with live reload.
+# Edit files in the project and see changes instantly in the browser.
+
+services:
+  personal_site:
+    image: personal_site
+    container_name: personal_site
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/src
+    restart: "no"
+    networks:
+      cluster-network:
+        ipv4_address: 174.44.0.103
+
+networks:
+  cluster-network:
+    name: cluster-network
+    external: true
