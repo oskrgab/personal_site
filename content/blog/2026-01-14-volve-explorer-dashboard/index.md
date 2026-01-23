@@ -2,8 +2,9 @@
 title: "Building an Oil Production Dashboard Without Python"
 date: 2026-01-14
 draft: false
-description: "How I built the Volve Explorer using Svelte and DuckDB Wasm for an instant, serverless experience."
 topics: ["svelte", "duckdb", "web-development", "oil-and-gas"]
+summary: "How I built the Volve Explorer using Svelte and DuckDB Wasm for an instant, serverless experience."
+
 ---
 ![Post Image](thumbnail.png)
 
