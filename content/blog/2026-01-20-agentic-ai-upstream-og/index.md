@@ -32,13 +32,13 @@ That’s very different from AI doing the job itself.
 
 In O&G, agentic AI still needs:
 
-⏺️ Access to specialized software
+- ⏺️ Access to specialized software
 
-⏺️ Heavy domain workflows (simulation, subsurface modeling, interpretation)
+- ⏺️ Heavy domain workflows (simulation, subsurface modeling, interpretation)
 
-⏺️ Significant compute
+- ⏺️ Significant compute
 
-⏺️ And domain context that isn’t public or standardized
+- ⏺️ And domain context that isn’t public or standardized
 
 That creates friction, which gives us time.
 
@@ -47,15 +47,15 @@ It means you still have time to position yourself.
 
 If you’re an O&G engineer, here’s what makes sense to try now:
 
-❇️ Learn how agentic workflows are built
+- ❇️ Learn how agentic workflows are built
 
-❇️ Develop domain tools AI will rely on
+- ❇️ Develop domain tools AI will rely on
 
-❇️ Connect those tools to open frameworks (MCP, skills, APIs)
+- ❇️ Connect those tools to open frameworks (MCP, skills, APIs)
 
-❇️ Improve performance so they can run in automated workflows
+- ❇️ Improve performance so they can run in automated workflows
 
-❇️ And yes, learn to code (try Vibe Coding at least to have a feeling of what you can do)
+- ❇️ And yes, learn to code (try Vibe Coding at least to have a feeling of what you can do)
 
 When AI truly arrives in our industry,
 you don’t want to be catching up.
