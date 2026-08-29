@@ -14,7 +14,7 @@ applications:
 
 - [formulaML](https://formulaml.com) - Machine Learning in Excel
 - [relperm](https://relperm.ocortez.com) - Saturation functions correlations for O&G.
-- [volve-db](https://volve-db.ocortez.com) - Volve dataset to parquet files.
+- [petrodb](https://petrodb.ocortez.com) - Volve dataset to parquet files.
 - [volve-explorer](https://volve-explorer.ocortez.com) - A web app to explore the Volve dataset (using volve-db!)
 
 </div>
